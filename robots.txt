@@ -1,0 +1,3 @@
+# O&K TRADE ── 公開前の確認用です。検索エンジンには載せません。
+User-agent: *
+Disallow: /

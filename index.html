@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>O&amp;K TRADE｜かつては走るために。これからは暮らしと共に。</title>
+<meta name="description" content="愛車のホイールを、廃車にせず家具へ。O&K TRADEはホイール家具と、ガレージ・趣味部屋・店舗などの空間づくりを手がけます。">
+<meta name="theme-color" content="#070707">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Cinzel:wght@400;500&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body class="is-proto">
+
+<div id="opening" aria-hidden="true">
+  <span class="op-line op-line--top"></span>
+  <div class="op-logo"><span class="op-ok">O&amp;K</span><span class="op-trade">TRADE</span></div>
+  <span class="op-line op-line--bottom"></span>
+</div>
+
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="O&K TRADE トップへ">
+    <span class="brand-ok">O&amp;K</span><span class="brand-trade">TRADE</span>
+  </a>
+  <nav class="site-nav" aria-label="メインメニュー">
+    <a href="#concept">CONCEPT</a>
+    <a href="collection.html">COLLECTION</a>
+    <a href="space.html">SPACE</a>
+    <a href="order.html">ORDER</a>
+    <a href="company.html">COMPANY</a>
+    <a href="company.html#contact" class="nav-cta">相談する</a>
+  </nav>
+  <button class="menu-btn" aria-label="メニュー" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<!-- 写真版TOP：01（写真）→02〜06（写真級の動画をスクロールでコマ送り）→ FINISH（仕上げ3色の写真）。3Dは使わない（ARだけ3Dモデル） -->
+<div class="ch-layer" aria-hidden="true">
+  <picture class="hero-photo">
+    <source media="(max-aspect-ratio: 1/1)" srcset="assets/photos/scene1-sp.webp">
+    <img src="assets/photos/scene1-pc.webp" alt="" decoding="async" fetchpriority="high">
+  </picture>
+  <canvas id="ch-canvas"></canvas>
+</div>
+
+<main id="top">
+  <!-- ===== STORY：車 → 分解 → ピックアップ → 家具 → 空間（リアルタイム3D）===== -->
+  <section class="story" id="story" aria-label="ホイールが家具になるまで">
+    <div class="stage">
+      <div class="cap cap--hero" data-in="-1" data-out=".05">
+        <p class="cap-no">01 — DRIVE</p>
+        <h1 class="cap-title">かつては<br>走るために。</h1>
+        <p class="cap-sub">WHEEL FURNITURE &amp; SPACE DESIGN</p>
+      </div>
+      <div class="cap" data-in=".12" data-out=".225">
+        <p class="cap-no">02 — DISASSEMBLE</p>
+        <h2 class="cap-title">廃車には、<br>しない。</h2>
+        <p class="cap-text">走り終えた一台を、<br>ひとつずつ、ほどいていく。</p>
+      </div>
+      <div class="cap" data-in=".29" data-out=".375">
+        <p class="cap-no">03 — PICK UP</p>
+        <h2 class="cap-title">この1本を、<br>選ぶ。</h2>
+        <p class="cap-text">道を支えてきたホイールを、<br>次の主役に。</p>
+      </div>
+      <div class="cap" data-in=".45" data-out=".535">
+        <p class="cap-no">04 — RESTORE</p>
+        <h2 class="cap-title">もう一度、<br>輝かせる。</h2>
+      </div>
+      <div class="cap" data-in=".61" data-out=".695">
+        <p class="cap-no">05 — TRANSFORM</p>
+        <h2 class="cap-title">これからは<br>暮らしと共に。</h2>
+      </div>
+      <div class="cap" data-in=".77" data-out=".865">
+        <p class="cap-no">06 — SPACE</p>
+        <h2 class="cap-title">時を刻む<br>家具へ。</h2>
+        <p class="cap-text">一台の記憶を、ガレージに、<br>リビングに、店に。</p>
+      </div>
+      <div class="cap cap--finish" data-in=".88" data-out="2">
+        <p class="cap-no">FINISH</p>
+        <h2 class="cap-title cap-title--s">仕上げを選ぶ</h2>
+        <p class="finish-name">ポリッシュ</p>
+        <div class="finish-btns" role="group" aria-label="仕上げ">
+          <button class="finish-btn" data-finish="polish" data-label="ポリッシュ" aria-pressed="true"><i style="--c:linear-gradient(135deg,#fafafa,#8d8d8d)"></i>POLISH</button>
+          <button class="finish-btn" data-finish="black" data-label="ブラック" aria-pressed="false"><i style="--c:linear-gradient(135deg,#444,#0c0c0c)"></i>BLACK</button>
+          <button class="finish-btn" data-finish="gold" data-label="ゴールド" aria-pressed="false"><i style="--c:linear-gradient(135deg,#f3d39a,#94692f)"></i>GOLD</button>
+        </div>
+        <button class="btn-ghost ar-open" type="button">部屋に置いてみる（AR・試作）</button>
+        
+      </div>
+      
+
+      <div class="callouts" data-on=".185,.23" aria-hidden="true">
+        <div class="co" data-pc=".44,.245" data-sp=".87,.257"><i class="co-line"></i><div class="co-txt"><span>01</span><b>BODY</b><em>ボディ</em></div></div>
+        <div class="co" data-pc=".515,.39" data-sp=".84,.386"><i class="co-line"></i><div class="co-txt"><span>02</span><b>INTERIOR</b><em>内装</em></div></div>
+        <div class="co" data-pc=".51,.54" data-sp=".81,.504"><i class="co-line"></i><div class="co-txt"><span>03</span><b>ENGINE</b><em>エンジン</em></div></div>
+        <div class="co" data-pc=".47,.69" data-sp=".87,.59"><i class="co-line"></i><div class="co-txt"><span>04</span><b>CHASSIS &amp; WHEELS</b><em>足回りとホイール</em></div></div>
+        <div class="co" data-pc=".445,.82" data-sp=".80,.66"><i class="co-line"></i><div class="co-txt"><span>05</span><b>UNDER PANEL</b><em>床下パネル</em></div></div>
+      </div>
+      <div class="callouts" data-on=".345,.39" aria-hidden="true">
+        <div class="co" data-pc=".573,.808" data-sp=".513,.525"><i class="co-line"></i><div class="co-txt"><span>01</span><b>RIM</b><em>リム</em></div></div>
+        <div class="co" data-pc=".565,.62" data-sp=".53,.455"><i class="co-line"></i><div class="co-txt"><span>02</span><b>SPOKE</b><em>スポーク</em></div></div>
+        <div class="co" data-pc=".655,.488" data-sp=".588,.39"><i class="co-line"></i><div class="co-txt"><span>03</span><b>CENTER CAP</b><em>センターキャップ</em></div></div>
+        <div class="co" data-pc=".58,.31" data-sp=".55,.27"><i class="co-line"></i><div class="co-txt"><span>04</span><b>BARREL</b><em>バレル（内側の筒）</em></div></div>
+      </div>
+      <div class="hud" aria-hidden="true">
+        <div class="hud-bar"><i class="hud-fill"></i></div>
+        <ol class="hud-ticks"><li>01 DRIVE</li><li>02 DISASSEMBLE</li><li>03 PICK UP</li><li>04 RESTORE</li><li>05 TRANSFORM</li><li>06 SPACE</li><li>FINISH</li></ol>
+        <p class="hud-num"><b>01</b> / 06</p>
+      </div>
+      <ol class="axis" aria-label="場面">
+        <li data-p="0"><span>車</span></li>
+        <li data-p=".2"><span>分解</span></li>
+        <li data-p=".35"><span>選ぶ</span></li>
+        <li data-p=".51"><span>磨く</span></li>
+        <li data-p=".67"><span>家具</span></li>
+        <li data-p=".84"><span>空間</span></li>
+        <li data-p="1"><span>仕上げ</span></li>
+      </ol>
+      <p class="scroll-hint"><span>SCROLL</span></p>
+    </div>
+  </section>
+
+  <!-- ===== CONCEPT ===== -->
+  <section class="sec concept" id="concept">
+    <div class="axis-line" aria-hidden="true"></div>
+    <p class="eyebrow reveal">CONCEPT</p>
+    <h2 class="concept-copy reveal"><span>かつては走るために。</span><span>これからは暮らしと共に。</span></h2>
+    <div class="concept-body reveal">
+      <p>愛車を、廃車にはしない。</p>
+      <p>走り終えたクルマからホイールを一本ずつ取り外し、テーブルや椅子、時計へと仕立て直します。一緒に走った時間は、これから先、暮らしの中で時を刻みつづけます。</p>
+      <p>O&amp;K TRADEは、ホイール家具と、その家具を中心にした空間づくりのブランドです。</p>
+    </div>
+  </section>
+
+  <!-- ===== COLLECTION ===== -->
+  <section class="sec collection" id="collection">
+    <!-- 先方の一覧画像（2026-10-24）をそのまま再現：見出し・紹介文・英字の柱、3・5・3枚の並び、左下に番号と品名 -->
+    <header class="col-head reveal">
+      <div class="col-head-l">
+        <p class="col-brand">O&amp;K TRADE</p>
+        <h2 class="col-title">ホイールが、インテリアになる。</h2>
+        <p class="col-en">WHEEL FURNITURE COLLECTION</p>
+      </div>
+      <p class="col-copy"><span>本物のホイールを再利用し、</span><br><span>O&amp;K TRADEが独自に製作した</span><br><span>オーダーメイドのホイール家具です。</span><br><span>唯一無二のデザインで、</span><span>特別な空間を演出します。</span></p>
+      <ul class="col-tags" aria-hidden="true"><li>AUTOMOTIVE</li><li>FURNITURE</li><li>INTERIOR</li><li>LIFESTYLE</li><li>O&amp;K TRADE</li></ul>
+    </header>
+    <div class="mosaic" data-rows="01,02,03|04,05,06,07,08|09,11,12"></div>
+    <p class="more reveal"><a class="btn-ghost" href="collection.html">11のデザインをすべて見る</a></p>
+    <p class="note">※掲載はデザインイメージです。実際の製品は、使用するホイールによって形・色・大きさが異なります。</p>
+  </section>
+
+  <!-- ===== SPACE ===== -->
+  <section class="sec space" id="space">
+    <header class="sec-head reveal">
+      <p class="eyebrow">SPACE DESIGN</p>
+      <h2 class="sec-title">家具から、空間ごと。</h2>
+      <p class="sec-lead">ホイール家具を中心に、空間そのものを組み立てます。</p>
+    </header>
+    <ol class="space-list">
+      <li class="space-card reveal"><span class="space-no">01</span><p class="space-en">GARAGE</p><h3>ガレージ</h3><p>愛車と、そのホイールで作った家具が並ぶ場所に。</p></li>
+      <li class="space-card reveal"><span class="space-no">02</span><p class="space-en">HOBBY ROOM</p><h3>趣味部屋</h3><p>好きなものに囲まれて過ごす、自分だけの一室に。</p></li>
+      <li class="space-card reveal"><span class="space-no">03</span><p class="space-en">RENTAL PROPERTY</p><h3>収益物件</h3><p>ほかの部屋にはない一点で、物件に物語を。</p></li>
+      <li class="space-card reveal"><span class="space-no">04</span><p class="space-en">SHOP</p><h3>店舗</h3><p>カフェやバー、ショールームの「顔」になる一台に。</p></li>
+      <li class="space-card reveal"><span class="space-no">05</span><p class="space-en">EVENT</p><h3>イベント</h3><p>展示やブースに、クルマの記憶を持ち込む演出を。</p></li>
+    </ol>
+    <p class="more reveal"><a class="btn-ghost" href="space.html">空間づくりを詳しく見る</a></p>
+  </section>
+
+  <!-- ===== ORDER ===== -->
+  <section class="sec order" id="order">
+    <header class="sec-head reveal">
+      <p class="eyebrow">ORDER</p>
+      <h2 class="sec-title">愛車のホイールを、家具に。</h2>
+      <p class="sec-lead">お持ちのホイールの持ち込みも、こちらでのホイール選びも、どちらからでも始められます。</p>
+    </header>
+    <ol class="steps">
+      <li class="step reveal"><span>01</span><h3>ご相談</h3><p>置きたい場所、つくりたいもの、愛車のことをお聞かせください。</p></li>
+      <li class="step reveal"><span>02</span><h3>ホイールを決める</h3><p>お手持ちのホイールを持ち込むか、こちらでご用意するかを選びます。</p></li>
+      <li class="step reveal"><span>03</span><h3>仕上げを選ぶ</h3><p>ポリッシュ、ブラック、ゴールドなど、空間に合わせて決めます。</p></li>
+      <li class="step reveal"><span>04</span><h3>製作</h3><p>一本ずつ手をかけて、家具へと仕立てます。</p></li>
+      <li class="step reveal"><span>05</span><h3>お届け</h3><p>ご指定の場所へお届けします。</p></li>
+    </ol>
+    <p class="more reveal"><a class="btn-ghost" href="order.html">オーダーの流れを詳しく見る</a></p>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="sec contact" id="contact">
+    <div class="axis-line" aria-hidden="true"></div>
+    <p class="eyebrow reveal">CONTACT</p>
+    <h2 class="contact-copy reveal">あなたのクルマの、<br>次の時間を一緒に。</h2>
+    <p class="contact-lead reveal">家具のご相談、空間づくりのご相談、どちらもこちらから。</p>
+    <a class="btn-primary reveal" href="company.html#contact">相談する</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="brand brand--foot"><span class="brand-ok">O&amp;K</span><span class="brand-trade">TRADE</span></div>
+  <nav class="foot-nav" aria-label="フッターメニュー">
+    <a href="index.html">TOP</a><a href="collection.html">COLLECTION</a><a href="space.html">SPACE</a><a href="order.html">ORDER</a><a href="company.html">COMPANY</a>
+  </nav>
+  <p class="foot-company">O&amp;K TRADE株式会社</p>
+  <p class="foot-copy">© O&amp;K TRADE</p>
+</footer>
+
+<dialog class="ar-dialog" data-lenis-prevent aria-label="ホイールテーブルを部屋に置いてみる">
+  <div class="ar-box">
+    <button class="ar-close" type="button" aria-label="閉じる">×</button>
+    <div class="ar-stage"></div>
+    <p class="ar-help">右下のボタンで、お部屋に実寸大で置けます（スマホのみ）。指で回して、いろいろな向きから見られます。</p>
+  </div>
+</dialog>
+
+<noscript><p class="noscript">このページの3D表示にはJavaScriptが必要です。</p></noscript>
+<script>
+  // 保険：JSや3Dが止まっても、3.5秒でオープニングを外して読めるようにする
+  setTimeout(function () { var o = document.getElementById('opening'); if (o) o.classList.add('is-done'); document.body.classList.add('is-ready'); }, 3500);
+</script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
